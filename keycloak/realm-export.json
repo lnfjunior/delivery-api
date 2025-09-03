@@ -1,0 +1,48 @@
+{
+  "realm": "delivery-realm",
+  "enabled": true,
+
+  "clients": [
+    {
+      "clientId": "delivery-api",
+      "name": "delivery-api",
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "redirectUris": ["*"],
+      "defaultClientScopes": ["web-origins", "roles", "profile", "email"],
+      "optionalClientScopes": ["address", "phone", "offline_access", "microprofile-jwt"]
+    }
+  ],
+
+  "roles": {
+    "realm": [
+      { "name": "delivery_user",  "description": "Read access" },
+      { "name": "delivery_admin", "description": "Admin access" }
+    ]
+  },
+
+  "users": [
+    {
+      "username": "user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "user@example.com",
+      "credentials": [ { "type": "password", "value": "user123", "temporary": false } ],
+      "realmRoles": [ "delivery_user" ]
+    },
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "User",
+      "email": "admin@example.com",
+      "credentials": [ { "type": "password", "value": "admin123", "temporary": false } ],
+      "realmRoles": [ "delivery_admin", "delivery_user" ]
+    }
+  ]
+}

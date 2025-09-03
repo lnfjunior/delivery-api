@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/deliverydb
+    driver-class-name: org.postgresql.Driver
+    username: delivery
+    password: delivery
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  redis:
+    enabled: false
+    host: ${SPRING_REDIS_HOST:redis}
+    port: ${SPRING_REDIS_PORT:6379}
+    timeout: 2000ms
+    connect-timeout: 2000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/delivery-realm
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env
+  health:
+    redis:
+      enabled: false
+    defaults:
+      enabled: true

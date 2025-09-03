@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/deliverydb
+    driver-class-name: org.postgresql.Driver
+    username: delivery
+    password: delivery
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
+
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/delivery-realm
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env
+  health:
+    redis:
+      enabled: false
+    defaults:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: INFO
+

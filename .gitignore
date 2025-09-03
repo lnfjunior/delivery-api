@@ -1,0 +1,67 @@
+# ---- SO / editor ----
+.DS_Store
+Thumbs.db
+
+# ---- IDEs ----
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# ---- Gradle / Java (build artefacts) ----
+.gradle/
+build/
+out/
+bin/
+classes/
+tmp/
+**/build/
+**/out/
+**/bin/
+**/tmp/
+**/target/
+*.class
+*.hprof
+hs_err_pid*
+replay_pid*
+
+# ---- Test / coverage ----
+**/reports/
+**/test-results/
+**/surefire-reports/
+**/failsafe-reports/
+**/jacoco/
+
+# ---- Logs ----
+logs/
+**/*.log
+
+# ---- Docker / env ----
+.env
+.env.*
+**/.env
+**/.env.*
+docker-data/
+volumes/
+**/docker-compose.override.yml
+
+# ---- Keycloak (dados locais – mantenha só configs) ----
+keycloak/data/
+keycloak/export/
+keycloak/tmp/
+keycloak/standalone/
+# manter arquivos de configuração/realms
+!keycloak/*.json
+!keycloak/*.yml
+!keycloak/*.yaml
+!keycloak/*.env.example
+
+# ---- Sonar / ferramentas ----
+.scannerwork/
+
+# ---- Gradle wrapper (não ignore) ----
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!gradlew
+!gradlew.bat
