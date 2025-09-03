@@ -17,20 +17,12 @@ Tecnologias: Java 17, Spring Boot 3.3, JPA, Validation, Redis (cache), OpenAPI (
 
 ```bash
 docker compose up -d
-# Aguarde o Keycloak iniciar e importar o realm (porta 8081)
+# Ele vai subir toda a estrutura necessária, inclusive a API delivery-api-app na porta 8080 e o keycloak na porta 8081
 ```
 
 ### Variáveis importantes
 - `KEYCLOAK_ISSUER_URI=http://localhost:8081/realms/delivery-realm` (default já cobre isto)
 - `SPRING_PROFILES_ACTIVE=docker` (para usar Postgres/Redis do compose)
-
-### Rodando a API
-> Você pode usar um Gradle local (17+) ou gerar o wrapper.
-```bash
-# na raiz do projeto
-# Se você tiver Gradle instalado:
-gradle bootRun --args='--spring.profiles.active=docker'
-```
 
 ## Como executar (opção 2: sem Docker, usando H2 e Redis local opcional)
 - **H2** já vem configurado no `application.yml` (memória). 
